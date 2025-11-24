@@ -6,17 +6,17 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:51:15 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/05/29 15:00:01 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 20:58:59 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma region Header
 
 /* -----| Internals |----- */
-#include "_ft_printf.h"
+#include "../_ft_printf.h"
 
 /* -----| Modules   |----- */
-#include "ft_printf.h"
+#include "../../ft_printf.h"
 
 #pragma endregion Header
 #pragma region Fonctions

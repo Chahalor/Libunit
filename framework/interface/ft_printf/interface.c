@@ -6,14 +6,14 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 16:12:05 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/06/03 15:36:30 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:50:37 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma region Header
 
 /* -----| Internals |----- */
-#include "_ft_printf.h"
+#include "_internal/_ft_printf.h"
 
 /* -----| Modules   |----- */
 #include "ft_printf.h"
@@ -108,6 +108,7 @@ __attribute__((__format__(__printf__, 2, 3))) int	ft_fprintf(
 	ft_bzero(buffer, PRINTF_BUFFER_SIZE);
 	print = _init_print(buffer, fd, PRINTF_BUFFER_SIZE);
 	write_loop(format, args, &print);
+	_add(&print, 0);
 	write(print.fd, print.buffer, print.buff_pos);
 	va_end(args);
 	return (print.nb_char);
@@ -134,10 +135,8 @@ __attribute__((__format__(__printf__, 2, 3))) int	ft_sprintf(
 	if (__builtin_expect(!format || write(1, "", 0) == -1, unexpected))
 		return (-1);
 	va_start(args, format);
-	ft_bzero(buffer, PRINTF_BUFFER_SIZE);
 	print = _init_print(buffer, 1, PRINTF_BUFFER_SIZE);
 	write_loop(format, args, &print);
-	write(print.fd, print.buffer, print.buff_pos);
 	va_end(args);
 	return (print.nb_char);
 }

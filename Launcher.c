@@ -6,11 +6,53 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:52:08 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 14:52:29 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:51:20 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc,  char *argv[])
+#include "core.h"
+
+char	*g_current_test = "";
+
+int	return_0(void)
 {
-	
+	return(0);
+}
+
+int	return_neg(void)
+{
+	return(-1);
+}
+
+int	return_pos(void)
+{
+	return(2);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_tester	tester;
+	int			exit_status;
+	int			i;
+
+	(void)argc;
+	(void)argv;
+	tester.nb_fails = 0;
+	tester.nb_tests = 0;
+	tester.tests = NULL;
+	g_current_test = "random shit";
+	load_test(&tester, "success 0", return_0);
+	load_test(&tester, "fail -1", return_neg);
+	load_test(&tester, "fail > 0", return_pos);
+
+	exit_status = run_tests(&tester, -1, -1);
+	i = 0;
+	while (i < tester.nb_tests)
+	{
+		mm_free(tester.tests[i]);
+		tester.tests[i] = NULL;
+		i++;
+	}
+	mm_free(tester.tests);
+	return (exit_status);
 }

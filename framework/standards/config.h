@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   depedencies.h                                      :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 19:53:59 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:25:15 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEPENDENCIES_H
-# define DEPENDENCIES_H
+#ifndef CONFIG_H
+# define CONFIG_H
 
 # pragma once
 
 /* ----| Headers    |----- */
 	/* Standard */
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-
+		//...
 	/* Internal */
 		//...
 	/* External */
@@ -36,4 +32,10 @@
 /* ----| Public     |----- */
 	//...
 
-#endif // DEPENDENCIES_H
+# ifndef BONUS
+#  define BONUS	1
+# endif	// BONUS
+
+# define NSIG	25
+
+#endif // CONFIG_H

@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 15:46:31 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:36:29 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@
 // # include "types.h"
 
 /* -----| Modules   |----- */
-	//...
+# include "memory.h"
+# include "interface.h"
+# include "utils.h"
 
 /* ************************************************************************** */
 /*                                 Macros                                     */
@@ -40,13 +42,16 @@
 /*                                 Prototypes                                 */
 /* ************************************************************************** */
 
-t_test	load_test(
-			const char *const name,
+t_test	*load_test(
+			t_tester *const restrict tester,
+			const char *const restrict name,
 			int (*const func)(void)
 			);
 
-int		run_test(
-			const t_test *test
+int		run_tests(
+			t_tester *const restrict tester,
+			const int begining,
+			const int end
 			);
 
 #endif	// CORE_H

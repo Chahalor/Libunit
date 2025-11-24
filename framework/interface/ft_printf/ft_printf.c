@@ -6,14 +6,14 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:36:25 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/05/29 15:02:37 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 20:57:53 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma region Header
 
 /* -----| Internals |----- */
-#include "_ft_printf.h"
+#include "_internal/_ft_printf.h"
 
 /* -----| Modules   |----- */
 #include "ft_printf.h"

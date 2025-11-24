@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 19:14:38 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/24 21:20:14 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#ifndef UTILS_H
+# define UTILS_H
 
 # pragma once
 
@@ -23,59 +23,36 @@
 	//...
 
 /* -----| Globals   |----- */
-	//...
+# include "standards.h"
 
 /* -----| Internals |----- */
-	//...
+// # include "types.h"
 
 /* -----| Modules   |----- */
 	//...
 
 /* ************************************************************************** */
-/*                                 Typedefs                                   */
-/* ************************************************************************** */
-
-typedef struct s_test	t_test;
-typedef struct s_tester	t_tester;
-
-/* ************************************************************************** */
-/*                                 Enums                                      */
-/* ************************************************************************** */
-
-enum e_test_status
-{
-	test_status_ok,
-	test_status_ko,
-	test_status_sigsev,
-	test_status_sigbus,
-	test_status_sigabrt,
-	test_status_sigfpe,
-	test_status_sigpipe,
-	test_status_sikill,
-	test_status_other,
-};
-
-/* ************************************************************************** */
-/*                                 Unions                                     */
+/*                                 Macros                                     */
 /* ************************************************************************** */
 	//...
 
 /* ************************************************************************** */
-/*                                 Structs                                    */
+/*                                 Prototypes                                 */
 /* ************************************************************************** */
 
-struct s_test
-{
-	char	*name;
-	int		output;
-	int		(*func)(void);
-};
+int		ft_strlen(
+			const char *const restrict str
+			);
 
-struct s_tester
-{
-	t_test	*tests;
-	int		nb_tests;
-	int		nb_fails;
-};
+void	ft_memcpy(
+			void *const restrict dest,
+			const void *const restrict src,
+			const int size
+			);
 
-#endif // TYPES_H
+void	ft_memset(
+			void *const restrict ptr,
+			const int size
+			);
+
+#endif	// UTILS_H

@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 19:10:14 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:36:35 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@
 // # include "types.h"
 
 /* -----| Modules   |----- */
-# include "ft_printf.h"
+# include "memory.h"
+# include "ft_printf/ft_printf.h"
+# include "utils.h"
 
 /* ************************************************************************** */
 /*                                 Macros                                     */

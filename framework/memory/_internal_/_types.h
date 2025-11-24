@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   _types.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 19:17:12 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/02/24 08:52:57 by delta_0ne         #+#    #+#             */
+/*   Updated: 2025/10/06 15:59:41 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#ifndef _TYPES_H
+# define _TYPES_H
 
+# undef _TYPES_H
 # pragma once
 
-/* ----| Headers    |----- */
-	/* Standard */
-		//...
-	/* Internal */
-		//...
-	/* External */
-		//...
+/* -------- modules --------- */
+	// --- externals --- //
+# include "../../../standards/standards.h"
 
-/* ----| Prototypes |----- */
-	//...
-
-/* ----| Internals  |----- */
-	//...
-
-/* ----| Public     |----- */
-	//...
-
-# ifndef BONUS
-#  define BONUS	1
-# endif	// BONUS
-
-#endif // CONFIG_H
+#endif

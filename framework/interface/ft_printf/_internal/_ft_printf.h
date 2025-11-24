@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:40:52 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/06/02 11:55:51 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 20:58:00 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 	//...
 
 /* -----| Internals |----- */
-# include "ft_printf.h"
+# include "../ft_printf.h"
 
 /* -----| Modules  |----- */
 	//...
