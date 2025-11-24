@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 14:23:09 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 19:17:12 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,9 @@
 
 /* ----| Public     |----- */
 	//...
+
+# ifndef BONUS
+#  define BONUS	1
+# endif	// BONUS
 
 #endif // CONFIG_H

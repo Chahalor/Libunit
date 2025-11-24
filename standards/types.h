@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 14:55:14 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 19:14:38 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ enum e_test_status
 	test_status_sigabrt,
 	test_status_sigfpe,
 	test_status_sigpipe,
-	test_status_sigill,
+	test_status_sikill,
 	test_status_other,
 };
 
