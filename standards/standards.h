@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 14:45:05 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/24 15:01:38 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "config.h"
 # include "formating.h"
 # include "depedencies.h"
+# include "types.h"
 
 	/* External */
 		//...
