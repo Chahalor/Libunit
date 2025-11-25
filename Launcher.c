@@ -6,13 +6,11 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:52:08 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 14:03:25 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 15:39:40 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
-
-char	*g_current_test = "";
 
 int	return_0(void)
 {

@@ -56,6 +56,5 @@ dkms.conf
 
 .vscode/
 .build/
-tests/
 
 *.log

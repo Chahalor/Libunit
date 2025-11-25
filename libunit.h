@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   libunit.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 15:51:50 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/25 15:30:41 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/25 15:38:23 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef LIBUNIT_H
+# define LIBUNIT_H
 
 # pragma once
 
@@ -23,17 +23,14 @@
 	//...
 
 /* -----| Globals   |----- */
-# include "../standards/standards.h"
-# include "../standards/formating.h"
+# include "framework/standards/config.h"
+# include "framework/standards/standards.h"
 
 /* -----| Internals |----- */
-// # include "types.h"
+# include "framework/standards/types.h"
 
 /* -----| Modules   |----- */
-# include "memory.h"
-# include "../server/server.h"
-# include "interface.h"
-# include "utils.h"
+# include "framework/core/core.h"
 
 /* ************************************************************************** */
 /*                                 Macros                                     */
@@ -43,18 +40,6 @@
 /* ************************************************************************** */
 /*                                 Prototypes                                 */
 /* ************************************************************************** */
+	//...
 
-t_test	*load_test(
-			t_tester *const restrict tester,
-			const char *const restrict name,
-			int (*const func)(void),
-			const struct timeval timeout
-			);
-
-int		run_tests(
-			t_tester *const restrict tester,
-			int begining,
-			int end
-			);
-
-#endif	// CORE_H
+#endif	//LIBUNIT_H
