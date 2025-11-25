@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:05:22 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 14:41:06 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:46:19 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ const char	*strsignal(
 		return ("KO");
 }
 
-__attribute_maybe_unused__
 static void	write_log_file(
 	const t_test *const restrict test
 )

@@ -40,7 +40,7 @@ _DEPS		:= $(_OBJ:.o=.d)
 
 .PHONY: all
 
-all: header $(NAME)
+all: header norm $(NAME)
 
 # ***************************************************** #
 # *                  Compiling                        * #
@@ -90,7 +90,6 @@ debug.fs: debug.fsanitize
 
 debug.pg:
 	$(eval DEBUGFLAGS=$(DEBUGFLAGS) -pg)
-
 
 # ***************************************************** #
 # *                      Utils                        * #
