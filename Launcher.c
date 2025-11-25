@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:52:08 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:51:20 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:03:25 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ int	return_pos(void)
 {
 	return(2);
 }
+int	should_timeout(void)
+{
+	while (1)
+		;
+}
+
+int	sigsev(void)
+{
+	char	*null = NULL;
+
+	*null = 10;
+	return (0);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -41,9 +54,11 @@ int	main(int argc, char *argv[])
 	tester.nb_tests = 0;
 	tester.tests = NULL;
 	g_current_test = "random shit";
-	load_test(&tester, "success 0", return_0);
-	load_test(&tester, "fail -1", return_neg);
-	load_test(&tester, "fail > 0", return_pos);
+	load_test(&tester, "success 0", return_0, (t_timeval){1, 0});
+	load_test(&tester, "fail -1", return_neg, (t_timeval){1, 0});
+	load_test(&tester, "fail > 0", return_pos, (t_timeval){1, 0});
+	load_test(&tester, "should timeout", should_timeout, (t_timeval){3, 0});
+	load_test(&tester, "should segfault", sigsev, (t_timeval){1, 0});
 
 	exit_status = run_tests(&tester, -1, -1);
 	i = 0;

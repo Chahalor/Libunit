@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:36:35 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 13:57:46 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,10 @@
 /*                                 Prototypes                                 */
 /* ************************************************************************** */
 
-void	log_test(
-			const int fd,
-			const char *const *function,
-			const char *const *name,
-			const int status
-			);
+int	handle_result(
+		t_tester *tester,
+		t_test *test,
+		int status
+		);
 
 #endif	// INTERFACE_H

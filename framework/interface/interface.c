@@ -6,35 +6,48 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:05:22 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 09:54:09 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:32:30 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 
-static const char	*g_signal_str[NSIG] = {
-[0] = "ok",
-[SIGHUP] = "Hangup",
-[SIGINT] = "Interrupt",
-[SIGQUIT] = "Quit",
-[SIGILL] = "Illegal instruction",
-[SIGTRAP] = "Trace/breakpoint trap",
-[SIGABRT] = "Abort",
-[SIGBUS] = "Bus error",
-[SIGFPE] = "Floating point exception",
-[SIGKILL] = "Killed",
-[SIGUSR1] = "User-defined signal 1",
-[SIGSEGV] = "Segmentation fault",
-[SIGUSR2] = "User-defined signal 2",
-[SIGPIPE] = "Broken pipe",
-[SIGALRM] = "Alarm clock",
-[SIGTERM] = "Terminated",
-[SIGCHLD] = "Child status changed",
-[SIGCONT] = "Continue",
-[SIGSTOP] = "Stopped",
-[SIGTSTP] = "Stopped (tty)",
-[SIGTTIN] = "Background read from tty",
-[SIGTTOU] = "Background write to tty",
+extern char	*g_current_test;
+
+#include <signal.h>
+
+static const char *g_signal_str[NSIG] = {
+	[0] = "OK",
+	[SIGHUP]  = "SIGHUP",
+	[SIGINT]  = "SIGINT",
+	[SIGQUIT] = "SIGQUIT",
+	[SIGILL]  = "SIGILL",
+	[SIGTRAP] = "SIGTRAP",
+	[SIGABRT] = "SIGABRT",
+	[SIGBUS]  = "SIGBUS",
+	[SIGFPE]  = "SIGFPE",
+	[SIGKILL] = "SIGKILL",
+	[SIGUSR1] = "SIGUSR1",
+	[SIGSEGV] = "SIGSEGV",
+	[SIGUSR2] = "SIGUSR2",
+	[SIGPIPE] = "SIGPIPE",
+	[SIGALRM] = "SIGALRM",
+	[SIGTERM] = "SIGTERM",
+	[SIGCHLD] = "SIGCHLD",
+	[SIGCONT] = "SIGCONT",
+	[SIGSTOP] = "SIGSTOP",
+	[SIGTSTP] = "SIGTSTP",
+	[SIGTTIN] = "SIGTTIN",
+	[SIGTTOU] = "SIGTTOU",
+	[SIGURG] = "SIGURG",
+	[SIGXCPU] = "SIGXCPU",
+	[SIGXFSZ] = "SIGXFSZ",
+	[SIGVTALRM] = "SIGVTALRM",
+	[SIGPROF] = "SIGPROF",
+	[SIGWINCH] = "SIGWINCH",
+	[SIGIO] = "SIGIO",
+	[SIGPWR] = "SIGPWR",
+	[SIGSYS] = "SIGSYS",
 };
 
 const char	*strsignal(
@@ -43,59 +56,82 @@ const char	*strsignal(
 {
 	if (sig >= 0 && sig < NSIG && g_signal_str[sig])
 		return (g_signal_str[sig]);
-	else if (sig == NSIG)
-		return ("ko");
 	else
-		return ("Unknown signal");
+		return ("KO");
 }
 
-#if BONUS != 1
-
-void	log_test(
-	const int fd,
-	const char *const *function,
-	const char *const *name,
-	const int status
-)
-
-{
-	char	*color;
-
-	if (status != test_status_ok)
-		color = RED;
-	else
-		color = GREEN;
-	ft_fprintf(fd, "%s%s:%s:%s"RESET, color, function, name, ft_strerr(status));
-}
-
-#else
-
-void	log_test(
-	const int fd,
-	const char *const *function,
-	const char *const *name,
-	const int status
+static void	write_log_file(
+	const t_test *const restrict test,
+	const char *tag
 )
 {
-	int		log_fd;
-	char	*color;
-	char	*filename;
+	const int	len = ft_strlen(g_current_test) + sizeof(".log");
+	char		*filename;
+	int			fd;
 
-	if (status != test_status_ok)
-		color = RED;
-	else
-		color = GREEN;
-	ft_fprintf(fd, "%s%s:%s:%s\n"RESET, color, function, name,
-		strsignal(status));
-	filename = mm_alloc(sizeof(char) * (ft_strlen((void *)function) + 6));
+	filename = mm_alloc(sizeof(char) * len);
 	if (!filename)
 		return ;
-	ft_memset(filename, (ft_strlen((void *)function) + 6));
-	ft_sprintf(filename, "%s.log", function);
-	log_fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	ft_fprintf(log_fd, "%s:%s:%s\n", function, name, strsignal(status));
+	ft_sprintf(filename, "%s.log", g_current_test);
+	fd = open(filename, O_CREAT | O_WRONLY, 0644);
+	if (fd < 0)
+		return (mm_free(filename));
+	ft_fprintf(fd, "[%s]:[%s]:[%s]\n", g_current_test, test->name, strsignal(test->output));
+	close(fd);
 	mm_free(filename);
-	close(log_fd);
 }
 
-#endif	// BONUS != 1
+static void	print_result_line(
+	const t_test *const restrict test,
+	const int result,
+	const int total
+)
+{
+	const int	line_up = total - test->index;
+	char		buffer[32];
+	char		*tag;
+
+	if (result == 0)
+		tag = "[  "GREEN"OK"RESET"      ]";
+	else if (result == SIGALRM)
+		tag = "[  "YELLOW"TIMEOUT"RESET" ]";
+	else if (result == SIGSEGV)
+		tag = "[  "RED"SEGV"RESET"    ]";
+	else if (result == SIGBUS)
+		tag = "[  BUS     ]";
+	else if (result == SIGABRT)
+		tag = "[  ABRT    ]";
+	else if (result == SIGILL)
+		tag = "[  SIGILL  ]";
+	else if (result == SIGPIPE)
+		tag = "[  SIGPIPE ]";
+	else if (result == SIGFPE)
+		tag = "[  SIGFPE  ]";
+	else
+		tag = "[  "RED"KO"RESET"      ]";
+	ft_sprintf(buffer, "\033[%dF", line_up);
+	ft_printf("\033[s%s\033[2K[%s]:[%s]:%s\n\033[u", buffer, g_current_test, test->name, tag);
+	write_log_file(test, tag);
+}
+
+int	handle_result(
+	t_tester *tester,
+	t_test *test,
+	int status
+)
+{
+	int	result;
+
+	if (WIFSIGNALED(status))
+		result = WTERMSIG(status);
+	else if (WIFEXITED(status))
+		result = WEXITSTATUS(status);
+	else
+		result = NSIG;
+	if (result)
+		tester->nb_fails++;
+	test->output = result;
+	test->finished = 1;
+	print_result_line(test, result, tester->nb_displayed);
+	return (result);
+}

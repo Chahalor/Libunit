@@ -20,12 +20,13 @@ DIR_BUILD	= .build
 DIR_CONFIG	= framework/standards
 DIR_INTERN	= _internal_
 
-INCLUDES	:= -I$(DIR_CONFIG) -Iframework/core -Iframework/interface -Iframework/utils -Iframework/interface/ft_printf -Iframework/memory
+INCLUDES	:= -I$(DIR_CONFIG) -Iframework/core -Iframework/interface -Iframework/utils -Iframework/interface/ft_printf -Iframework/memory -Iframework/server
 
 SRC			:=	framework/core/core.c framework/interface/interface.c framework/utils/utils.c \
 				framework/interface/ft_printf/ft_printf.c framework/interface/ft_printf/interface.c \
 				framework/interface/ft_printf/_internal/printf/writer.c framework/interface/ft_printf/_internal/utils/_utils.c \
-				framework/memory/memory.c framework/memory/_internal_/_memory.c framework/memory/_internal_/_memory_utils.c
+				framework/memory/memory.c framework/memory/_internal_/_memory.c framework/memory/_internal_/_memory_utils.c \
+				framework/server/server.c
 _SRC_ALL	:= $(SRC)
 
 _OBJ		:= $(addprefix $(DIR_BUILD)/, $(_SRC_ALL:.c=.o))

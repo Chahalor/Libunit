@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:25:15 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 10:58:01 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONFIG_H
 
 # pragma once
+
+# define _GNU_SOURCE
 
 /* ----| Headers    |----- */
 	/* Standard */

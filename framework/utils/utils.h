@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:20:14 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:01:29 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 // # include "types.h"
 
 /* -----| Modules   |----- */
-	//...
+# include "memory.h"
 
 /* ************************************************************************** */
 /*                                 Macros                                     */
@@ -53,6 +53,10 @@ void	ft_memcpy(
 void	ft_memset(
 			void *const restrict ptr,
 			const int size
+			);
+
+void	exit_program(
+			const int code
 			);
 
 #endif	// UTILS_H

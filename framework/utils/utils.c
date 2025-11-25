@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 20:02:32 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 09:55:07 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 09:58:06 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,12 @@ void	ft_memset(
 	i = 0;
 	while (i < size)
 		((char *)ptr)[i++] = 0;
+}
+
+extern void	exit_program(
+	const int code
+)
+{
+	mm_destroy();
+	exit(code);
 }

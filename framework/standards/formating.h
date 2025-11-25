@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:16:49 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 09:54:52 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 12:39:36 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define CURSOR_LEFT	"\033[1D"
 # define CURSOR_RIGHT	"\033[1C"
 # define CURSOR_HOME	"\033[H"
+# define CLEAR_LINE		"\33[2K"
 
 // string
 

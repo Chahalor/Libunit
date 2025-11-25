@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 20:13:41 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:03:09 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 /*                                 Typedefs                                   */
 /* ************************************************************************** */
 
+typedef struct timeval	t_timeval;
 typedef struct s_test	t_test;
 typedef struct s_tester	t_tester;
 
@@ -66,16 +67,21 @@ enum e_test_status
 
 struct s_test
 {
-	char	*name;
-	int		output;
-	int		(*func)(void);
+	struct timeval	timeout;
+	char			*name;
+	int				(*func)(void);
+	int				finished;
+	int				index;
+	int				output;
+	pid_t			pid;
 };
 
 struct s_tester
 {
-	t_test	**tests;
 	int		nb_tests;
 	int		nb_fails;
+	int		nb_displayed;
+	t_test	**tests;
 };
 
 #endif // TYPES_H

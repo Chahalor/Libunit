@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 09:54:38 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 10:57:57 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <sys/wait.h>
 # include <sys/signal.h>
 # include <fcntl.h>
+# include <sys/time.h>
+# include <aio.h>
 
 	/* Internal */
 		//...

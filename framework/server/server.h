@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   server.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 11:13:31 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/25 10:08:15 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/25 10:18:18 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef SERVER_H
+# define SERVER_H
 
 # pragma once
 
@@ -23,16 +23,13 @@
 	//...
 
 /* -----| Globals   |----- */
+# include "config.h"
 # include "standards.h"
-# include "formating.h"
 
 /* -----| Internals |----- */
-// # include "types.h"
+# include "types.h"
 
 /* -----| Modules   |----- */
-# include "memory.h"
-# include "server.h"
-# include "interface.h"
 # include "utils.h"
 
 /* ************************************************************************** */
@@ -44,17 +41,6 @@
 /*                                 Prototypes                                 */
 /* ************************************************************************** */
 
-t_test	*load_test(
-			t_tester *const restrict tester,
-			const char *const restrict name,
-			int (*const func)(void),
-			const struct timeval timeout
-			);
+int	server_init(void);
 
-int		run_tests(
-			t_tester *const restrict tester,
-			int begining,
-			int end
-			);
-
-#endif	// CORE_H
+#endif	// SERVER_H
