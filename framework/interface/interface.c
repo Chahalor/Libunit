@@ -6,38 +6,38 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:05:22 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:48:42 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 09:54:09 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 
 static const char	*g_signal_str[NSIG] = {
-		[0] = "ok",
-		[SIGHUP]  = "Hangup",
-		[SIGINT]  = "Interrupt",
-		[SIGQUIT] = "Quit",
-		[SIGILL]  = "Illegal instruction",
-		[SIGTRAP] = "Trace/breakpoint trap",
-		[SIGABRT] = "Abort",
-		[SIGBUS]  = "Bus error",
-		[SIGFPE]  = "Floating point exception",
-		[SIGKILL] = "Killed",
-		[SIGUSR1] = "User-defined signal 1",
-		[SIGSEGV] = "Segmentation fault",
-		[SIGUSR2] = "User-defined signal 2",
-		[SIGPIPE] = "Broken pipe",
-		[SIGALRM] = "Alarm clock",
-		[SIGTERM] = "Terminated",
-		[SIGCHLD] = "Child status changed",
-		[SIGCONT] = "Continue",
-		[SIGSTOP] = "Stopped",
-		[SIGTSTP] = "Stopped (tty)",
-		[SIGTTIN] = "Background read from tty",
-		[SIGTTOU] = "Background write to tty",
+[0] = "ok",
+[SIGHUP] = "Hangup",
+[SIGINT] = "Interrupt",
+[SIGQUIT] = "Quit",
+[SIGILL] = "Illegal instruction",
+[SIGTRAP] = "Trace/breakpoint trap",
+[SIGABRT] = "Abort",
+[SIGBUS] = "Bus error",
+[SIGFPE] = "Floating point exception",
+[SIGKILL] = "Killed",
+[SIGUSR1] = "User-defined signal 1",
+[SIGSEGV] = "Segmentation fault",
+[SIGUSR2] = "User-defined signal 2",
+[SIGPIPE] = "Broken pipe",
+[SIGALRM] = "Alarm clock",
+[SIGTERM] = "Terminated",
+[SIGCHLD] = "Child status changed",
+[SIGCONT] = "Continue",
+[SIGSTOP] = "Stopped",
+[SIGTSTP] = "Stopped (tty)",
+[SIGTTIN] = "Background read from tty",
+[SIGTTOU] = "Background write to tty",
 };
 
-const char *strsignal(
+const char	*strsignal(
 	const int sig
 )
 {
@@ -49,13 +49,14 @@ const char *strsignal(
 		return ("Unknown signal");
 }
 
+#if BONUS != 1
+
 void	log_test(
 	const int fd,
 	const char *const *function,
 	const char *const *name,
 	const int status
 )
-#if BONUS != 1
 
 {
 	char	*color;
@@ -69,16 +70,23 @@ void	log_test(
 
 #else
 
+void	log_test(
+	const int fd,
+	const char *const *function,
+	const char *const *name,
+	const int status
+)
 {
-	int			log_fd;
-	char		*color;
-	char		*filename;
+	int		log_fd;
+	char	*color;
+	char	*filename;
 
 	if (status != test_status_ok)
 		color = RED;
 	else
 		color = GREEN;
-	ft_fprintf(fd, "%s%s:%s:%s\n"RESET, color, function, name, strsignal(status));
+	ft_fprintf(fd, "%s%s:%s:%s\n"RESET, color, function, name,
+		strsignal(status));
 	filename = mm_alloc(sizeof(char) * (ft_strlen((void *)function) + 6));
 	if (!filename)
 		return ;

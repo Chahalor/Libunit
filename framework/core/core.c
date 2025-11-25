@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:59:53 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:48:29 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 09:50:38 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static inline void	*_realloc(
 	t_test	**dummy;
 	int		i;
 
-	dummy = mm_alloc(sizeof(t_test *) * (tester->nb_tests  + 16));
+	dummy = mm_alloc(sizeof(t_test *) * (tester->nb_tests + 16));
 	if (!dummy)
 		return (NULL);
 	if (tester->tests)
@@ -111,13 +111,12 @@ static inline int	run_test(
 
 int	run_tests(
 	t_tester *const restrict tester,
-	const int begining,
-	const int end
+	int begining,
+	int end
 )
 {
 	int	i;
 	int	result;
-	int	stop;
 	int	nb_testes;
 
 	if (begining >= tester->nb_tests)
@@ -125,20 +124,20 @@ int	run_tests(
 	else
 		i = begining * (begining > 0);
 	if ((end < 0) || (end > tester->nb_tests))
-		stop = tester->nb_tests;
-	else
-		stop = end;
-	if (stop < i)
-		stop = tester->nb_tests;
-	nb_testes = stop - i;
-	while (i < stop)
+		end = tester->nb_tests;
+	if (end < i)
+		end = tester->nb_tests;
+	nb_testes = end - i;
+	while (i < end)
 	{
 		result = run_test(tester->tests[i]);
 		if (result != 0)
 			tester->nb_fails++;
-		log_test(2, (void *)g_current_test, (void *)tester->tests[i]->name, result);
+		log_test(2, (void *)g_current_test, (void *)tester->tests[i]->name,
+			result);
 		i++;
 	}
-	ft_fprintf(2, "%d/%d tester successfull\n", nb_testes - tester->nb_fails, nb_testes);
+	ft_fprintf(2, "%d/%d tester successfull\n",
+		nb_testes - tester->nb_fails, nb_testes);
 	return (-(tester->nb_fails != 0));
 }

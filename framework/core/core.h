@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:39:55 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:36:29 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 09:50:21 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_test	*load_test(
 
 int		run_tests(
 			t_tester *const restrict tester,
-			const int begining,
-			const int end
+			int begining,
+			int end
 			);
 
 #endif	// CORE_H

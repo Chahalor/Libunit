@@ -6,22 +6,22 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:21:56 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 21:23:54 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 09:54:38 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEPENDENCIES_H
-# define DEPENDENCIES_H
+#ifndef DEPEDENCIES_H
+# define DEPEDENCIES_H
 
 # pragma once
 
 /* ----| Headers    |----- */
 	/* Standard */
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <sys/signal.h>
-#include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <sys/wait.h>
+# include <sys/signal.h>
+# include <fcntl.h>
 
 	/* Internal */
 		//...
@@ -37,4 +37,4 @@
 /* ----| Public     |----- */
 	//...
 
-#endif // DEPENDENCIES_H
+#endif // DEPEDENCIES_H

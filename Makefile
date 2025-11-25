@@ -20,7 +20,7 @@ DIR_BUILD	= .build
 DIR_CONFIG	= framework/standards
 DIR_INTERN	= _internal_
 
-INCLUDES	:= -I$(DIR_CONFIG) -Iframework/core -Iframework/interface -Iframework/utils framework/interface/ft_printf -Iframework/memory
+INCLUDES	:= -I$(DIR_CONFIG) -Iframework/core -Iframework/interface -Iframework/utils -Iframework/interface/ft_printf -Iframework/memory
 
 SRC			:=	framework/core/core.c framework/interface/interface.c framework/utils/utils.c \
 				framework/interface/ft_printf/ft_printf.c framework/interface/ft_printf/interface.c \
@@ -106,6 +106,28 @@ header:
 ifeq ($(MAKELEVEL), 0)
 	@echo "Big Fat Header"
 endif
+
+NORM_FILES := framework/
+norm:
+	@printf "$(_YELLOW) 🔎 Checking norminette...$(_RESET)"
+	@NORM_OUTPUT="$$(norminette $(NORM_FILES) | grep 'Error')" ; \
+	if [ -z "$$NORM_OUTPUT" ]; then \
+		printf "$(_GREEN) ✅ Norminette passed with no errors.$(_RESET)\n"; \
+	else \
+		printf "\r" ; 		printf "$$NORM_OUTPUT" | awk '\
+		/\.c: Error!/ || /\.h: Error!/ { file=$$0; next } \
+		/Error:/ { \
+			l=match($$0, /line: *[0-9]+/); \
+			c=match($$0, /col: *[0-9]+/); \
+			line=substr($$0, l+6, 10); \
+			col=substr($$0, c+5, 10); \
+			gsub(/\(line: *[0-9]+, *col: *[0-9]+\): */, "", $$0); \
+			sub(/Error: /, "", $$0); \
+			split(file, parts, ":"); \
+			printf "$(_RED)Error$(_RESET): %s:%s:%s: %s\n", parts[1], line+0, col+0, $$0; \
+		}' ; \
+		echo "$(_RED) ❌ Norminette errors found$(_RESET)" ; \
+	fi
 
 # -----| Install / Uninstall |----- #
 
