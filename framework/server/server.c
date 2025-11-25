@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 10:09:03 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 14:01:35 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:39:31 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	_signal_handler(
 	void *context
 )
 {
+	(void)signal;
 	(void)info;
 	(void)context;
 	exit_program(signal);

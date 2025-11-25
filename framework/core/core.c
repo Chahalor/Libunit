@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:59:53 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 14:10:55 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:33:08 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,8 @@ int	run_tests(
 	while (i < end)
 	{
 		tester->tests[i]->index = tester->nb_displayed;
-		ft_printf("[%s]:[%s]:[   RUN    ]\n", g_current_test, tester->tests[i]->name);
-
+		ft_printf("[%s]:[%s]:[   RUN    ]\n", g_current_test,
+			tester->tests[i]->name);
 		tester->nb_displayed++;
 		run_test(tester->tests[i++]);
 	}
