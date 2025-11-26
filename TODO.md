@@ -1,4 +1,4 @@
 ## TODO
-- [ ] add tests
-- [ ] check with invalid `load_test()` call
-- [ ] implement the log ligne memory
+- [X] add tests
+- [X] check with invalid `load_test()` call
+- [X] implement the log ligne memory
