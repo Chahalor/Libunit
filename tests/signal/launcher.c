@@ -6,13 +6,13 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:26:47 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/26 09:29:03 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 09:37:57 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-#define UNO_SECONDO	(t_timeval){1, 0}
+// #define (t_timeval){1, 0}	(t_timeval){1, 0}
 
 int	sigsev(void);
 int	sigbus(void);
@@ -27,20 +27,17 @@ int	launcher_signal(
 	const int stop
 )
 {
-	t_tester	tester = {0};
-	int			result;
+	static t_tester	tester = {0};
+	int				result;
 
 	g_current_test = "test signal";
-
-	load_test(&tester, "should SIGSEV", sigsev, UNO_SECONDO);
-	load_test(&tester, "should SIGBUS", sigbus, UNO_SECONDO);
-	load_test(&tester, "should SIGABRT", sigabrt, UNO_SECONDO);
-	load_test(&tester, "should SIGFPE", sigfpe, UNO_SECONDO);
-	load_test(&tester, "should SIGPIPE", sigpipe, UNO_SECONDO);
-	load_test(&tester, "should TIMEOUT", test_timeout, UNO_SECONDO);
-	load_test(&tester, "should SIGILL", sigill, UNO_SECONDO);
-
+	load_test(&tester, "should SIGSEV", sigsev, (t_timeval){1, 0});
+	load_test(&tester, "should SIGBUS", sigbus, (t_timeval){1, 0});
+	load_test(&tester, "should SIGABRT", sigabrt, (t_timeval){1, 0});
+	load_test(&tester, "should SIGFPE", sigfpe, (t_timeval){1, 0});
+	load_test(&tester, "should SIGPIPE", sigpipe, (t_timeval){1, 0});
+	load_test(&tester, "should TIMEOUT", test_timeout, (t_timeval){1, 0});
+	load_test(&tester, "should SIGILL", sigill, (t_timeval){1, 0});
 	result = run_tests(&tester, start, stop);
-
 	return (result);
 }
