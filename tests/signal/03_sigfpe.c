@@ -6,14 +6,14 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:14:07 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 15:17:16 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 08:15:22 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
+#include <unistd.h>
+
 int	sigfpe(void)
 {
-	if (10 / 0)
-		return (0);
-	else
-		return (-1);
+	return (kill(getpid(), SIGFPE));
 }

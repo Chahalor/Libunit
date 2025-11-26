@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:26:47 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 15:50:33 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 08:13:54 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int	launcher_signal(
 	const int stop
 )
 {
-	t_tester	tester;
+	t_tester	tester = {0};
 	int			result;
+
+	g_current_test = "test signal";
 
 	load_test(&tester, "should SIGSEV", sigsev, UNO_SECONDO);
 	load_test(&tester, "should SIGBUS", sigbus, UNO_SECONDO);
@@ -39,6 +41,7 @@ int	launcher_signal(
 
 	result = run_tests(&tester, start, stop);
 
+	exit_program(result);
 	return (result);
 }
 

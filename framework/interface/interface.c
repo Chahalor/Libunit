@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:05:22 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 14:46:19 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 08:24:04 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,22 @@ const char	*strsignal(
 		return ("KO");
 }
 
+int	get_log_fd(
+	const char *file
+)
+{
+	static int	fd = -1;
+
+	if (file && fd < 0)
+		fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	else if (!file && fd > 0)
+	{
+		close(fd);
+		fd = -1;
+	}
+	return (fd);
+}
+
 static void	write_log_file(
 	const t_test *const restrict test
 )
@@ -70,12 +86,11 @@ static void	write_log_file(
 	if (!filename)
 		return ;
 	ft_sprintf(filename, "%s.log", g_current_test);
-	fd = open(filename, O_CREAT | O_WRONLY, 0644);
+	fd = get_log_fd(filename);
 	if (fd < 0)
 		return (mm_free(filename));
 	ft_fprintf(fd, "[%s]:[%s]:[%s]\n", g_current_test, test->name,
 		strsignal(test->output));
-	close(fd);
 	mm_free(filename);
 }
 

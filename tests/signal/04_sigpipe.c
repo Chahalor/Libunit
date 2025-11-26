@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:17:58 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 15:19:12 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 08:09:46 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 
 int	sigpipe(void)
 {
-	kill(getpid(), SIGPIPE);
+	return (kill(getpid(), SIGPIPE));
 }

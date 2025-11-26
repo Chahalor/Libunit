@@ -6,13 +6,13 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:59:53 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/25 14:33:08 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 08:24:50 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core.h"
 
-extern char	*g_current_test;
+char	*g_current_test = "";
 
 static inline void	*_realloc(
 	t_tester *const restrict tester,
@@ -134,6 +134,7 @@ static inline int	display_tests(
 	}
 	ft_fprintf(2, "%d/%d tests successfull\n",
 		nb_tests - tester->nb_fails, nb_tests);
+	get_log_fd(NULL);
 	return (-(tester->nb_fails != 0));
 }
 
