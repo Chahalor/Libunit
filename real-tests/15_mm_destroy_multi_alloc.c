@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Launcher.c                                         :+:      :+:    :+:   */
+/*   15_mm_destroy_multi_alloc.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:52:08 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/26 09:30:35 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/26 08:50:17 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/26 09:11:00 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "core.h"
+#include "framework/memory/memory.h"
 
-int	launcher_signal(
-		const int start,
-		const int stop
-		);
-
-int	launcher_memory(
-		const int start,
-		const int end
-		);
-
-int	main(int argc, char *argv[])
+int	test_memory_neutral_mm_destroy_many_alloc(void)
 {
-	int	result;
-
-	result = launcher_signal(0, 6);
-	result += launcher_memory(0, 15) * result == -1;
-	
-	exit_program(result);
-	return (result);
+	mm_alloc(50);
+	mm_alloc(45);
+	mm_alloc(456);
+	mm_alloc(5468);
+	mm_alloc(321321);
+	mm_alloc(11);
+	mm_alloc(12);
+	mm_alloc(45);
+	mm_alloc(15);
+	mm_alloc(77887);
+	if (mm_destroy(), 1)
+		return (0);
+	else
+		return (-1);
 }

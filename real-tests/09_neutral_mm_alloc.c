@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_strlen_null.c                                   :+:      :+:    :+:   */
+/*   09_neutral_mm_alloc.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:50:59 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/24 14:52:03 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/26 08:50:17 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/26 08:54:49 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	strlen_null(void)
+#include <string.h>
+#include "framework/memory/memory.h"
+
+int	test_memory_neutral_mm_alloc(void)
 {
-	return (ft_strlen(NULL));
+	char	*buffer;
+
+	buffer = mm_alloc(sizeof(char) * 12);
+	memcpy(buffer, "bob is bob\n", 12);
+	neutral(buffer, 12);
+	if (memcmp(buffer, "\0\0\0\0\0\0\0\0\0\0\0", 12) == 0)
+		return (mm_free(buffer), 0);
+	else
+		return (-1);
 }

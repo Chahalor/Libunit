@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   05_sigill.c                                        :+:      :+:    :+:   */
+/*   03_alloc_size_1000.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/25 15:21:20 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/26 08:08:38 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/26 08:41:39 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/26 08:48:38 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	sigill(void)
+#include "framework/memory/memory.h"
+
+int	test_memory_alloc_size_1000(void)
 {
-	void	(*func)(void) = (void*)0x1;
-	func();
-	return (0);
+	void	*ptr;
+
+	ptr = mm_alloc(1000);
+	if (ptr != NULL)
+		return (mm_free(ptr), 0);
+	else
+		return (-1);
 }

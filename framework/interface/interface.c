@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:05:22 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/26 08:24:04 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 09:19:00 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ static void	print_result_line(
 	const int	line_up = total - test->index;
 	char		buffer[32];
 	char		*color;
+	int			size;
 
 	if (result == 0)
 		color = GREEN;
@@ -110,7 +111,8 @@ static void	print_result_line(
 		color = YELLOW;
 	else
 		color = RED;
-	ft_sprintf(buffer, "\033[%dF", line_up);
+	size = ft_sprintf(buffer, "\033[%dF", line_up);
+	buffer[size] = 0;
 	ft_printf("\033[s%s\033[2K[%s]:[%s]:[%s%s"RESET"]\n\033[u", buffer,
 		g_current_test, test->name, color, strsignal(result));
 	write_log_file(test);

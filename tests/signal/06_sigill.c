@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Launcher.c                                         :+:      :+:    :+:   */
+/*   05_sigill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:52:08 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/26 09:30:35 by nduvoid          ###   ########.fr       */
+/*   Created: 2025/11/25 15:21:20 by nduvoid           #+#    #+#             */
+/*   Updated: 2025/11/26 08:29:45 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "core.h"
+#include <signal.h>
+#include <unistd.h>
 
-int	launcher_signal(
-		const int start,
-		const int stop
-		);
-
-int	launcher_memory(
-		const int start,
-		const int end
-		);
-
-int	main(int argc, char *argv[])
+int	sigill(void)
 {
-	int	result;
-
-	result = launcher_signal(0, 6);
-	result += launcher_memory(0, 15) * result == -1;
-	
-	exit_program(result);
-	return (result);
+	kill(getpid(), SIGILL);
+	return (0);
 }

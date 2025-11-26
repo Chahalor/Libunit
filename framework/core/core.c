@@ -6,7 +6,7 @@
 /*   By: nduvoid <nduvoid@student.42mulhouse.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 19:59:53 by nduvoid           #+#    #+#             */
-/*   Updated: 2025/11/26 08:24:50 by nduvoid          ###   ########.fr       */
+/*   Updated: 2025/11/26 09:23:56 by nduvoid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_test	*load_test(
 	const struct timeval timeout
 )
 {
-	static int	alloc_size = 0;
 	t_test		*result;
 	int			len;
 
@@ -62,11 +61,11 @@ t_test	*load_test(
 	result->output = 0;
 	result->timeout = timeout;
 	result->finished = 0;
-	if (tester->nb_tests < alloc_size)
+	if (tester->nb_tests < tester->alloc_size)
 		tester->tests[tester->nb_tests++] = result;
 	else
 	{
-		if (!_realloc(tester, &alloc_size))
+		if (!_realloc(tester, &tester->alloc_size))
 			return (mm_free(result), NULL);
 		tester->tests[tester->nb_tests++] = result;
 	}

@@ -13,12 +13,14 @@
 NAME		:= libunit.a
 
 CC			:= cc
-CFLAGS		:= -Wall -Wextra -Werror -MMD #more flags
+CFLAGS		:= -Wall -Wextra -Werror -MMD -g3 #more flags
 DEBUGFLAGS	:=
 
 DIR_BUILD	= .build
 DIR_CONFIG	= framework/standards
 DIR_INTERN	= _internal_
+DIR_TEST	= tests
+DIR_REAL_TEST	= real-tests
 
 INCLUDES	:= -I$(DIR_CONFIG) -Iframework/core -Iframework/interface -Iframework/utils -Iframework/interface/ft_printf -Iframework/memory -Iframework/server
 
@@ -41,6 +43,10 @@ _DEPS		:= $(_OBJ:.o=.d)
 .PHONY: all
 
 all: header norm $(NAME)
+
+test: all
+	cc $(DEBUGFLAGS) $(INCLUDES) -I./ $(DIR_TEST)/**/*.c $(DIR_REAL_TEST)/*.c Launcher.c $(NAME) -o test
+	./test
 
 # ***************************************************** #
 # *                  Compiling                        * #
